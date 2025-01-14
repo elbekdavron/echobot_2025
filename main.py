@@ -1,6 +1,7 @@
 import requests
 import os
-TOKEN = os.getenv("TOKEN")
+import time
+TOKEN = "7834826184:AAGlkO2hP_A4t9EoJ6n89JoTK6mVLizBz-A"
 
 
 
@@ -15,6 +16,16 @@ def send_message(text, chat_id):
     r=requests.get(url)
     return r.json()
 
-CHAT_ID = "86775091"
-send_message("SALOM", CHAT_ID)
+while True:
+    response = requests.get(f"https://api.telegram.org/bot{TOKEN}/getUpdates")
+    data = response.json()
+
+    if data["result"]: 
+        last_update = data["result"][-1]
+        message = last_update["message"]
+        chat_id = message["chat"]["id"]
+        text = message["text"]
+
+        send_message(text, chat_id) 
+        break 
 
