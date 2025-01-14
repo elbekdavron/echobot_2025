@@ -3,7 +3,7 @@ import os
 
 TOKEN = os.getenv("TOKEN")
 
-def send_audio(chat_id:str, audio:str):
+def send_audio(chat_id:str, audio):
     url = f'https://api.telegram.org/bot{TOKEN}/sendPhoto'
     param = {
         'chat_id':chat_id

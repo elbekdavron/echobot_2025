@@ -1,7 +1,8 @@
 import requests
 import os
-import time
-TOKEN = "7834826184:AAGlkO2hP_A4t9EoJ6n89JoTK6mVLizBz-A"
+
+
+TOKEN = os.getenv("TOKEN")
 
 
 
